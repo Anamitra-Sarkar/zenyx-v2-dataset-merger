@@ -8,9 +8,11 @@ output:
 
 runtime:
   streaming: true
+  # num_proc is defined here for reference but is NOT used by the pipeline.
+  # Parallelism is handled at the upload stage (--upload-workers flag) only.
   num_proc: 4
-  shard_size: 5000        # FIX: was 100000 — lowered for memory safety (CoT traces are large)
-  max_examples_per_dataset: null   # e.g. 100 for dry run test
+  shard_size: 5000        # lowered for memory safety — CoT traces are large
+  max_examples_per_dataset: null   # set e.g. 100 for a quick test run
 
 schema:
   text_key_candidates:
@@ -67,7 +69,7 @@ datasets:
 
   # ── R1-Style / Thinking ─────────────────────────────────────────
   - id: "open-r1/Mixture-of-Thoughts"
-    subset: null
+    subset: "all"       # FIX: requires config name — available: all, code, math, science
     split: "train"
   - id: "open-r1/OpenThoughts-114k-math"
     subset: null
@@ -79,7 +81,7 @@ datasets:
     subset: null
     split: "train"
   - id: "ServiceNow-AI/R1-Distill-SFT"
-    subset: null
+    subset: "v0"        # FIX: requires config name — available: v0, v1
     split: "train"
   - id: "Magpie-Align/Magpie-Reasoning-V2-250K-CoT-Deepseek-R1-Llama-70B"
     subset: null
@@ -94,7 +96,7 @@ datasets:
     subset: null
     split: "train"
   - id: "cognitivecomputations/dolphin-r1"
-    subset: null
+    subset: "reasoning-deepseek"   # FIX: requires config name — available: nonreasoning, reasoning-deepseek, reasoning-flash
     split: "train"
   - id: "prithivMLmods/Deepthink-Reasoning-Instruction"
     subset: null
@@ -108,11 +110,11 @@ datasets:
 
   # ── Code Reasoning ──────────────────────────────────────────────
   - id: "nvidia/OpenCodeReasoning"
-    subset: null
+    subset: "split0"    # FIX: requires config name — available: split0, split1
     split: "train"
   - id: "nvidia/OpenCodeReasoning-2"
-    subset: null
-    split: "train"
+    subset: "python"    # FIX: requires config name + split — available splits: python, cpp
+    split: "python"
   - id: "mlfoundations-dev/a1_code_opencodereasoning"
     subset: null
     split: "train"
