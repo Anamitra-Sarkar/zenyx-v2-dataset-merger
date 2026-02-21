@@ -1,21 +1,42 @@
 # Config for THINKING / CoT / R1-style merge
 
 output:
-  repo_id: "Arko007/zenyx-v2-think"   # HF dataset repo to push to (optional)
+  repo_id: "Arko007/zenyx-v2-think"   # HF dataset repo to push to
   local_dir: "./out_thinking"
   private: true
-  push_to_hf: false   # set true when ready
+  push_to_hf: false   # set true when ready to push
 
 runtime:
   streaming: true
   num_proc: 4
-  shard_size: 100000
-  max_examples_per_dataset: null   # e.g. 10000 for test
+  shard_size: 5000        # FIX: was 100000 — lowered for memory safety (CoT traces are large)
+  max_examples_per_dataset: null   # e.g. 100 for dry run test
 
 schema:
-  text_key_candidates: ["text", "content", "prompt", "response", "messages", "completion", "instruction", "input", "output", "question", "answer", "solution", "rationale", "reasoning", "cot", "final"]
+  text_key_candidates:
+    - "text"
+    - "content"
+    - "prompt"
+    - "response"
+    - "messages"
+    - "conversations"
+    - "conversation"
+    - "completion"
+    - "instruction"
+    - "input"
+    - "output"
+    - "question"
+    - "answer"
+    - "solution"
+    - "rationale"
+    - "reasoning"
+    - "cot"
+    - "final"
+    - "problem"
+    - "chat"
 
 datasets:
+  # ── Math CoT ────────────────────────────────────────────────────
   - id: "PrimeIntellect/NuminaMath-QwQ-CoT-5M"
     subset: null
     split: "train"
@@ -44,6 +65,7 @@ datasets:
     subset: null
     split: "train"
 
+  # ── R1-Style / Thinking ─────────────────────────────────────────
   - id: "open-r1/Mixture-of-Thoughts"
     subset: null
     split: "train"
@@ -84,6 +106,7 @@ datasets:
     subset: null
     split: "train"
 
+  # ── Code Reasoning ──────────────────────────────────────────────
   - id: "nvidia/OpenCodeReasoning"
     subset: null
     split: "train"
@@ -109,6 +132,7 @@ datasets:
     subset: null
     split: "train"
 
+  # ── PRM / Step-Level ────────────────────────────────────────────
   - id: "tasksource/PRM800K"
     subset: null
     split: "train"
