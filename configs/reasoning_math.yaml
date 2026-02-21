@@ -1,0 +1,77 @@
+# reasoning/math — all math CoT / PRM datasets
+
+output:
+  repo_id: "Arko007/zenyx-v2-think"
+  local_dir: "./out_thinking"
+  private: true
+  push_to_hf: false
+  category: "reasoning/math"
+
+runtime:
+  streaming: true
+  shard_size: 5000
+  max_examples_per_dataset: null
+
+schema:
+  text_key_candidates:
+    - "text"
+    - "content"
+    - "prompt"
+    - "response"
+    - "messages"
+    - "conversations"
+    - "conversation"
+    - "completion"
+    - "instruction"
+    - "input"
+    - "output"
+    - "question"
+    - "answer"
+    - "solution"
+    - "rationale"
+    - "reasoning"
+    - "cot"
+    - "final"
+    - "problem"
+    - "chat"
+
+datasets:
+  - id: "PrimeIntellect/NuminaMath-QwQ-CoT-5M"
+    subset: null
+    split: "train"
+  - id: "AI-MO/NuminaMath-CoT"
+    subset: null
+    split: "train"
+  - id: "AI-MO/NuminaMath-TIR"
+    subset: null
+    split: "train"
+  - id: "open-r1/OpenR1-Math-220k"
+    subset: null
+    split: "train"
+  - id: "meta-math/MetaMathQA"
+    subset: null
+    split: "train"
+  - id: "TIGER-Lab/MATH-plus"
+    subset: null
+    split: "train"
+  - id: "169Pi/mathreasoning"
+    subset: null
+    split: "train"
+  - id: "zwhe99/DeepMath-103K"
+    subset: null
+    split: "train"
+  - id: "friendshipkim/DeepMath-103K-filtered"
+    subset: null
+    split: "train"
+  - id: "tasksource/PRM800K"
+    subset: null
+    split: "train"
+  - id: "peiyi9979/Math-Shepherd"
+    subset: null
+    split: "train"
+  - id: "allenai/RLVR-GSM"
+    subset: null
+    split: "train"
+  - id: "allenai/RLVR-MATH"
+    subset: null
+    split: "train"

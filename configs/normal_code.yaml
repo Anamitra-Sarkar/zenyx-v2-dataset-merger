@@ -1,0 +1,43 @@
+# normal/code — standard (non-reasoning) code datasets
+# Add datasets here as needed.
+
+output:
+  repo_id: "Arko007/zenyx-v2-think"
+  local_dir: "./out_thinking"
+  private: true
+  push_to_hf: false
+  category: "normal/code"
+
+runtime:
+  streaming: true
+  shard_size: 5000
+  max_examples_per_dataset: null
+
+schema:
+  text_key_candidates:
+    - "text"
+    - "content"
+    - "prompt"
+    - "response"
+    - "messages"
+    - "conversations"
+    - "conversation"
+    - "completion"
+    - "instruction"
+    - "input"
+    - "output"
+    - "question"
+    - "answer"
+    - "solution"
+    - "rationale"
+    - "reasoning"
+    - "cot"
+    - "final"
+    - "problem"
+    - "chat"
+
+datasets: []
+  # Example:
+  # - id: "bigcode/the-stack-v2-train-smol-ids"
+  #   subset: null
+  #   split: "train"

@@ -1,0 +1,69 @@
+# reasoning/code — all code reasoning datasets (all languages)
+
+output:
+  repo_id: "Arko007/zenyx-v2-think"
+  local_dir: "./out_thinking"
+  private: true
+  push_to_hf: false
+  category: "reasoning/code"
+
+runtime:
+  streaming: true
+  shard_size: 5000
+  max_examples_per_dataset: null
+
+schema:
+  text_key_candidates:
+    - "text"
+    - "content"
+    - "prompt"
+    - "response"
+    - "messages"
+    - "conversations"
+    - "conversation"
+    - "completion"
+    - "instruction"
+    - "input"
+    - "output"
+    - "question"
+    - "answer"
+    - "solution"
+    - "rationale"
+    - "reasoning"
+    - "cot"
+    - "final"
+    - "problem"
+    - "chat"
+
+datasets:
+  # nvidia — both splits, both languages
+  - id: "nvidia/OpenCodeReasoning"
+    subset: "split0"
+    split: "train"
+  - id: "nvidia/OpenCodeReasoning"
+    subset: "split1"
+    split: "train"
+  - id: "nvidia/OpenCodeReasoning-2"
+    subset: "python"
+    split: "python"
+  - id: "nvidia/OpenCodeReasoning-2"
+    subset: "cpp"
+    split: "cpp"
+  - id: "mlfoundations-dev/a1_code_opencodereasoning"
+    subset: null
+    split: "train"
+  - id: "efficientscaling/Z1-Code-Reasoning-107K"
+    subset: null
+    split: "train"
+  - id: "open-r1/codeforces-cots"
+    subset: null
+    split: "train"
+  - id: "open-r1/codeforces"
+    subset: null
+    split: "train"
+  - id: "microsoft/rStar-Coder"
+    subset: null
+    split: "train"
+  - id: "PrimeIntellect/SYNTHETIC-1"
+    subset: null
+    split: "train"

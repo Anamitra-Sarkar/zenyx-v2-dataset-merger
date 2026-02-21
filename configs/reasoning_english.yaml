@@ -1,0 +1,86 @@
+# reasoning/english — general reasoning / R1-style English datasets
+
+output:
+  repo_id: "Arko007/zenyx-v2-think"
+  local_dir: "./out_thinking"
+  private: true
+  push_to_hf: false
+  category: "reasoning/english"
+
+runtime:
+  streaming: true
+  shard_size: 5000
+  max_examples_per_dataset: null
+
+schema:
+  text_key_candidates:
+    - "text"
+    - "content"
+    - "prompt"
+    - "response"
+    - "messages"
+    - "conversations"
+    - "conversation"
+    - "completion"
+    - "instruction"
+    - "input"
+    - "output"
+    - "question"
+    - "answer"
+    - "solution"
+    - "rationale"
+    - "reasoning"
+    - "cot"
+    - "final"
+    - "problem"
+    - "chat"
+
+datasets:
+  - id: "open-r1/Mixture-of-Thoughts"
+    subset: "all"
+    split: "train"
+  - id: "open-r1/OpenThoughts-114k-math"
+    subset: null
+    split: "train"
+  - id: "open-thoughts/OpenThoughts-114k"
+    subset: null
+    split: "train"
+  - id: "open-thoughts/OpenThoughts2-1M"
+    subset: null
+    split: "train"
+  - id: "ServiceNow-AI/R1-Distill-SFT"
+    subset: "v0"
+    split: "train"
+  - id: "ServiceNow-AI/R1-Distill-SFT"
+    subset: "v1"
+    split: "train"
+  - id: "Magpie-Align/Magpie-Reasoning-V2-250K-CoT-Deepseek-R1-Llama-70B"
+    subset: null
+    split: "train"
+  - id: "bespokelabs/Bespoke-Stratos-17k"
+    subset: null
+    split: "train"
+  - id: "simplescaling/s1K-1.1"
+    subset: null
+    split: "train"
+  - id: "QuixiAI/dolphin-r1"
+    subset: null
+    split: "train"
+  - id: "cognitivecomputations/dolphin-r1"
+    subset: "reasoning-deepseek"
+    split: "train"
+  - id: "cognitivecomputations/dolphin-r1"
+    subset: "reasoning-flash"
+    split: "train"
+  - id: "cognitivecomputations/dolphin-r1"
+    subset: "nonreasoning"
+    split: "train"
+  - id: "prithivMLmods/Deepthink-Reasoning-Instruction"
+    subset: null
+    split: "train"
+  - id: "EricLu/SCP-116K"
+    subset: null
+    split: "train"
+  - id: "Rickxz06/RAfull"
+    subset: null
+    split: "train"

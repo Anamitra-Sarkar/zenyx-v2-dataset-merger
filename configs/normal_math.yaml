@@ -1,0 +1,43 @@
+# normal/math — standard (non-reasoning) math datasets
+# Add datasets here as needed.
+
+output:
+  repo_id: "Arko007/zenyx-v2-think"
+  local_dir: "./out_thinking"
+  private: true
+  push_to_hf: false
+  category: "normal/math"
+
+runtime:
+  streaming: true
+  shard_size: 5000
+  max_examples_per_dataset: null
+
+schema:
+  text_key_candidates:
+    - "text"
+    - "content"
+    - "prompt"
+    - "response"
+    - "messages"
+    - "conversations"
+    - "conversation"
+    - "completion"
+    - "instruction"
+    - "input"
+    - "output"
+    - "question"
+    - "answer"
+    - "solution"
+    - "rationale"
+    - "reasoning"
+    - "cot"
+    - "final"
+    - "problem"
+    - "chat"
+
+datasets: []
+  # Example:
+  # - id: "HuggingFaceH4/MATH-500"
+  #   subset: null
+  #   split: "test"
