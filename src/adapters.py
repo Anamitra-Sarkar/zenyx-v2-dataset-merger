@@ -1,12 +1,13 @@
 """HuggingFace dataset adapters.
 
 Fixes:
-- trust_remote_code=True for datasets with custom loading scripts
 - Split fallback: train → default → first available split
 - Silent failure watchdog: if skip ratio hits 100% after WATCHDOG_MIN_ROWS, raises RuntimeError
 - Streaming fallback: if streaming=True fails, retries with streaming=False
 - PRM adapter: custom extraction for Process Reward Model datasets
 - category field: read from DatasetSpec, written into every example's meta
+
+Note: trust_remote_code removed — deprecated and errors on newer datasets versions.
 
 Unified example:
 {
@@ -21,7 +22,7 @@ Unified example:
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Dict, Iterator, List, Optional
 
 from datasets import load_dataset, get_dataset_split_names
@@ -52,7 +53,6 @@ def _resolve_split(spec: DatasetSpec, token: Optional[str]) -> str:
         available = get_dataset_split_names(
             spec.id,
             config_name=spec.subset,
-            trust_remote_code=True,
             token=token,
         )
     except Exception:
@@ -84,7 +84,6 @@ def _load_dataset_with_fallback(
         name=spec.subset,
         split=split,
         token=token,
-        trust_remote_code=True,
     )
     try:
         return load_dataset(**load_kwargs, streaming=streaming)

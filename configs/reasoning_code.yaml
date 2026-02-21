@@ -36,19 +36,20 @@ schema:
     - "chat"
 
 datasets:
-  # nvidia — both splits, both languages
+  # nvidia/OpenCodeReasoning: config names use underscores (split_0, split_1)
   - id: "nvidia/OpenCodeReasoning"
-    subset: "split0"
+    subset: "split_0"
     split: "train"
   - id: "nvidia/OpenCodeReasoning"
-    subset: "split1"
+    subset: "split_1"
     split: "train"
+  # nvidia/OpenCodeReasoning-2: single config 'train', language in split path (train/python, train/cpp)
   - id: "nvidia/OpenCodeReasoning-2"
-    subset: "python"
-    split: "python"
+    subset: null
+    split: "train/python"
   - id: "nvidia/OpenCodeReasoning-2"
-    subset: "cpp"
-    split: "cpp"
+    subset: null
+    split: "train/cpp"
   - id: "mlfoundations-dev/a1_code_opencodereasoning"
     subset: null
     split: "train"
