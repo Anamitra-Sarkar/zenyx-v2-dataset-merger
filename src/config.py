@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any, Dict
 
 import orjson
+import yaml  # pyyaml — listed in requirements.txt
 
 
 def read_text(path: str | Path) -> str:
@@ -22,8 +23,5 @@ def write_json(path: str | Path, obj: Any) -> None:
 
 
 def read_yaml(path: str | Path) -> Dict[str, Any]:
-    # lazy import to keep deps minimal
-    import yaml
-
     with open(path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)

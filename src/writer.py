@@ -5,6 +5,7 @@ Fixes:
 - Removed pandas + datasets dependency (saves ~3× memory per shard flush)
 - CRITICAL FIX: shard filenames are now globally unique via uuid prefix to prevent
   cross-dataset shard overwriting when write_shards is called in a loop
+- Guard against shard_size <= 0 which would cause an infinite flush loop
 """
 
 from __future__ import annotations
@@ -40,12 +41,15 @@ def write_shards(
     ----------
     examples       : iterable of unified dicts
     out_dir        : directory to write shards into
-    shard_size     : max rows per shard
+    shard_size     : max rows per shard (must be >= 1)
     dataset_prefix : optional human-readable prefix (sanitised dataset name);
                      combined with a uuid4 hex to guarantee globally unique filenames
                      even when this function is called many times in the same out_dir.
     """
     import orjson
+
+    if shard_size < 1:
+        raise ValueError(f"shard_size must be >= 1, got {shard_size!r}")
 
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
